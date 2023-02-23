@@ -1,0 +1,66 @@
+﻿@model ECommerce.Models.StudentVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2 class="text-center mb-3 p-4 alert-info rounded shadow">Edit Student Details</h2>
+
+        <form asp-action="Edit" asp-controller="Students" method="post" enctype="multipart/form-data">
+            <div class="row p-4 shadow rounded">
+                <div class="col-6 p-4">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="StudentName" class="control-label"></label>
+                        <input asp-for="StudentId" type="hidden"/>
+                        <input asp-for="StudentName" class="form-control" />
+                        <span asp-validation-for="StudentName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Age" class="control-label"></label>
+                        <input asp-for="Age" class="form-control" />
+                        <span asp-validation-for="Age" class="text-danger"></span>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="IsRegular" /> @Html.DisplayNameFor(model => model.IsRegular)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AdmissionDate" class="control-label"></label>
+                        <input asp-for="AdmissionDate" class="form-control" />
+                        <span asp-validation-for="AdmissionDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PictureFile" class="control-label"></label>
+                        <input asp-for="PicturePath" type="hidden"/>
+                        <input asp-for="PictureFile" class="form-control-file" type="file" />
+                        <span asp-validation-for="PictureFile" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6 mb-2 p-4">
+                    <div class="d-flex justify-content-between mb-2">
+                        <h4>Courses</h4>
+                        <a id="btnPlus" class="btn btn-primary">More Subject</a>
+                    </div>
+                    <div id="CourseContainer">
+                        @foreach (var item in Model.CourseList)
+                        {
+                            <script>
+                                LoadCourse(@item);
+                            </script>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group mt-2 text-center">
+                <input type="submit" value="Update" class="btn btn-primary shadow-lg col-6 px-5" />
+            </div>
+        </form>
+
+
+@*
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@

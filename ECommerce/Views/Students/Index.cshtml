@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ECommerce.Models.Student>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center mb-3 p-4 alert-info rounded shadow">Student List</h1>
+
+<div class="d-flex justify-content-end mb-2">
+    <a asp-action="Create" asp-controller="Students" class="btn btn-primary">Create New</a>
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="row mb-2 shadow rounded p-4">
+
+        <div class="col-8 m-auto text-center">
+
+            <img src="@item.PicturePath" width="100" height="200" class="img-thumbnail"/>
+            <h4>@item.StudentName</h4>
+            <h6>@item.Age</h6>
+            <h6>@item.AdmissionDate.ToLongDateString()</h6>
+            <div>
+                <a asp-action="Edit" asp-controller="Students" asp-route-id="@item.StudentId" class="btn btn-info mr-1">Edit</a>
+                <a asp-action="Delete" asp-controller="Students" asp-route-id="@item.StudentId" class="btn btn-danger mr-1">Delete</a>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Selected Courses</th>
+                    </tr>
+                    @foreach (var record in item.StudentEntries)
+                    {
+                        <tr>
+                            <td>@record.Course.CourseName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+

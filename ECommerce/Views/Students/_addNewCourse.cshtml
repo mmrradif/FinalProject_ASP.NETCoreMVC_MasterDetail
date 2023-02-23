@@ -1,0 +1,13 @@
+﻿
+@model ECommerce.Models.Course
+
+<div class="row mb-2 shadow p-2">
+    <div class=" col-8">
+        <select asp-for="CourseId" asp-items="@ViewBag.courses" class="form-control form-select">
+            <option value=""></option>
+        </select>
+    </div>
+    <div class="col-4 text-center">
+        <a href="#" id="btnDeleteCourse" class="btn btn-danger text-white">Remove</a>
+    </div>
+</div>

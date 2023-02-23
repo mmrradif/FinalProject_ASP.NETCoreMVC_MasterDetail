@@ -1,0 +1,95 @@
+﻿@model ECommerce.Models.StudentVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2 class="text-center mb-3 p-4 alert-info rounded shadow">New Student Entry</h2>
+
+        <form asp-action="Create" asp-controller="Students" method="post" enctype="multipart/form-data">
+
+            <div class="row p-3 shadow rounded">
+                <div class="col-10 m-auto">
+                    <div asp-validation-summary="ModelOnly" class="text-danger ++text-center">
+
+                    </div>
+
+                    <div class="form-group">
+                       @* <label asp-for="StudentName" class="control-label"></label>*@
+                       <h6>Name</h6>
+                        <input asp-for="StudentName" class="form-control shadow" />
+                        <span asp-validation-for="StudentName" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6 p-3 shadow rounded">
+                            <div class="form-group">
+                                @*<label asp-for="Age" class="control-label"></label>*@
+                                <h6>Age</h6>
+                                <input asp-for="Age" class="form-control" />
+                                <span asp-validation-for="Age" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="IsRegular" /> <h6>Regular?</h6> @*@Html.DisplayNameFor(model => model.IsRegular)*@
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                @* <label asp-for="AdmissionDate" class="control-label"></label>*@
+                                <h6>Admission Date</h6>
+                                <input asp-for="AdmissionDate" class="form-control" />
+                                <span asp-validation-for="AdmissionDate" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                @* <label asp-for="PictureFile" class="control-label"></label>*@
+
+                                <h6>Photo</h6>
+                                <input asp-for="PictureFile" class="form-control-file" type="file" />
+                                <span asp-validation-for="PictureFile" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="col-6 p-3 shadow rounded overflow-auto h-25">
+                            <div class="d-flex justify-content-between mb-2">
+                                <h4>Select Course</h4>
+                                <a href="#" id="btnPlus" class="btn btn-primary text-white shadow">More Subject</a>
+                            </div>
+                            <div id="CourseContainer">
+                                <script>
+                                    LoadCourse();
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                @*<div class="col-6">
+                    <div class="d-flex justify-content-between">
+                        <h4>Select Course</h4>
+                        <a id="btnPlus" class="btn btn-primary">+</a>
+                    </div>
+                    <div id="CourseContainer">
+                        <script>
+                            LoadCourse();
+                        </script>
+                    </div>
+                </div>*@
+            </div>
+            
+            <div class="form-group mt-2 text-center">
+                <input type="submit" value="Save" class="btn btn-primary shadow-lg col-6 px-5" />
+            </div>
+        </form>
+
+
+@*
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
